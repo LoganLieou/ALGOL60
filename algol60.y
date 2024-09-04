@@ -9,6 +9,7 @@ extern int yyparse();
 extern FILE *yyin;
 %}
 
+/* TODO define this properly */
 %union {
     int num;
     char sep;
@@ -18,36 +19,27 @@ extern FILE *yyin;
     int bol;
 }
 
-%token <al> LETTER
-%token <num> DIGIT
-%token <bol> LOGICAL
+/* bracket tokens */
+%token TOK_LPAREN TOK_RPAREN TOK_LBRACKET TOK_RBRACKET TOK_BACKTICK TOK_APOSTROPHE TOK_BEGIN TOK_END
 
-%token <bol> RELATIONAL_OPERATOR
-%token <op> LOGICAL_OPERATOR
-%token <op> SEQUENTIAL_OPERATOR
-
-%token <sep> SEPARATOR
-%token <str> BRACKET
-%token <str> DECLARATOR
-%token <str> SPECIFICATOR
-
-%type <num> EXPRESSION
-
-%start EXPRESSION
+/* specificator tokens */
+%token TOK_STRING TOK_LABEL TOK_VALUE
 
 %%
+bracket:
+    TOK_LPAREN
+    | TOK_RPAREN
+    | TOK_LBRACKET
+    | TOK_RBRACKET
+    | TOK_BACKTICK
+    | TOK_APOSTROPHE
+    | TOK_BEGIN
+    | TOK_END
 
-/* this is going to be so much isn't it oh no */
-EXPRESSION: DIGIT SEQUENTIAL_OPERATOR DIGIT {
-    printf("WE HIT SOME CONDITION\n");
-    printf("$1=%d $2=%c $3=%d\n", $1, $2, $3);
-    if ($1 == '+') {
-        $$ = $2 + $3;
-    }
-
-    $$ = $1;
-}
-
+specificator:
+    TOK_STRING
+    | TOK_LABEL
+    | TOK_VALUE
 %%
 
 void yyerror(const char *s) {

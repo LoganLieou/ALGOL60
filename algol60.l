@@ -1,23 +1,22 @@
 %option noyywrap
 
 %{
-
-#include <stdio.h>
-#include <stdlib.h>
 #include "algol60.tab.h"
-
 %}
 
 %%
 
-[:digit:] {
-    yylval.num = atoi(yytext);
-    return DIGIT;
-}
+\( { printf("received a lparen token\n"); return TOK_LPAREN; }
+\) { return TOK_RPAREN; }
+\[ { return TOK_LBRACKET; }
+\] { return TOK_LBRACKET; }
+`  { return TOK_BACKTICK; }
+\' { return TOK_APOSTROPHE; } 
+"begin" { return TOK_BEGIN; }
+"end" { return TOK_END; }
 
-[:alpha:] {
-    yylval.str = yytext;
-    return LETTER;
-}
+[ \t\n]+ /* skip whitespace */
+
+. { /*rem*/ }
 
 %%
