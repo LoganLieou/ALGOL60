@@ -46,7 +46,27 @@
      TOK_BACKTICK = 262,
      TOK_APOSTROPHE = 263,
      TOK_BEGIN = 264,
-     TOK_END = 265
+     TOK_END = 265,
+     TOK_STRING = 266,
+     TOK_LABEL = 267,
+     TOK_VALUE = 268,
+     TOK_OWN = 269,
+     TOK_BOOLEAN = 270,
+     TOK_INTEGER = 271,
+     TOK_REAL = 272,
+     TOK_ARRAY = 273,
+     TOK_SWITCH = 274,
+     TOK_PROCEDURE = 275,
+     TOK_COMMA = 276,
+     TOK_PERIOD = 277,
+     TOK_COLON = 278,
+     TOK_SEMICOLON = 279,
+     TOK_WALRUS = 280,
+     TOK_UNDERSCORE = 281,
+     TOK_STEP = 282,
+     TOK_UNTIL = 283,
+     TOK_WHILE = 284,
+     TOK_COMMENT = 285
    };
 #endif
 /* Tokens.  */
@@ -58,6 +78,26 @@
 #define TOK_APOSTROPHE 263
 #define TOK_BEGIN 264
 #define TOK_END 265
+#define TOK_STRING 266
+#define TOK_LABEL 267
+#define TOK_VALUE 268
+#define TOK_OWN 269
+#define TOK_BOOLEAN 270
+#define TOK_INTEGER 271
+#define TOK_REAL 272
+#define TOK_ARRAY 273
+#define TOK_SWITCH 274
+#define TOK_PROCEDURE 275
+#define TOK_COMMA 276
+#define TOK_PERIOD 277
+#define TOK_COLON 278
+#define TOK_SEMICOLON 279
+#define TOK_WALRUS 280
+#define TOK_UNDERSCORE 281
+#define TOK_STEP 282
+#define TOK_UNTIL 283
+#define TOK_WHILE 284
+#define TOK_COMMENT 285
 
 
 
@@ -74,7 +114,7 @@ typedef union YYSTYPE
     int bol;
 }
 /* Line 1529 of yacc.c.  */
-#line 78 "algol60.tab.h"
+#line 118 "algol60.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
