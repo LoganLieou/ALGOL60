@@ -66,7 +66,34 @@
      TOK_STEP = 282,
      TOK_UNTIL = 283,
      TOK_WHILE = 284,
-     TOK_COMMENT = 285
+     TOK_COMMENT = 285,
+     TOK_GOTO = 286,
+     TOK_ELSE = 287,
+     TOK_IF = 288,
+     TOK_THEN = 289,
+     TOK_FOR = 290,
+     TOK_DO = 291,
+     TOK_L_AND = 292,
+     TOK_L_OR = 293,
+     TOK_L_IN = 294,
+     TOK_L_NOT = 295,
+     TOK_LESS = 296,
+     TOK_GREATER = 297,
+     TOK_GEQ = 298,
+     TOK_LEQ = 299,
+     TOK_EQUAL = 300,
+     TOK_NEQ = 301,
+     TOK_PLUS = 302,
+     TOK_MINUS = 303,
+     TOK_MUL = 304,
+     TOK_DIV = 305,
+     TOK_MUL2 = 306,
+     TOK_DIV2 = 307,
+     TOK_UP = 308,
+     TOK_TRUE = 309,
+     TOK_FALSE = 310,
+     TOK_LETTER = 311,
+     TOK_DIGIT = 312
    };
 #endif
 /* Tokens.  */
@@ -98,13 +125,40 @@
 #define TOK_UNTIL 283
 #define TOK_WHILE 284
 #define TOK_COMMENT 285
+#define TOK_GOTO 286
+#define TOK_ELSE 287
+#define TOK_IF 288
+#define TOK_THEN 289
+#define TOK_FOR 290
+#define TOK_DO 291
+#define TOK_L_AND 292
+#define TOK_L_OR 293
+#define TOK_L_IN 294
+#define TOK_L_NOT 295
+#define TOK_LESS 296
+#define TOK_GREATER 297
+#define TOK_GEQ 298
+#define TOK_LEQ 299
+#define TOK_EQUAL 300
+#define TOK_NEQ 301
+#define TOK_PLUS 302
+#define TOK_MINUS 303
+#define TOK_MUL 304
+#define TOK_DIV 305
+#define TOK_MUL2 306
+#define TOK_DIV2 307
+#define TOK_UP 308
+#define TOK_TRUE 309
+#define TOK_FALSE 310
+#define TOK_LETTER 311
+#define TOK_DIGIT 312
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 13 "algol60.y"
+#line 18 "algol60.y"
 {
     int num;
     char sep;
@@ -114,7 +168,7 @@ typedef union YYSTYPE
     int bol;
 }
 /* Line 1529 of yacc.c.  */
-#line 118 "algol60.tab.h"
+#line 172 "algol60.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

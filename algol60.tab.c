@@ -93,7 +93,34 @@
      TOK_STEP = 282,
      TOK_UNTIL = 283,
      TOK_WHILE = 284,
-     TOK_COMMENT = 285
+     TOK_COMMENT = 285,
+     TOK_GOTO = 286,
+     TOK_ELSE = 287,
+     TOK_IF = 288,
+     TOK_THEN = 289,
+     TOK_FOR = 290,
+     TOK_DO = 291,
+     TOK_L_AND = 292,
+     TOK_L_OR = 293,
+     TOK_L_IN = 294,
+     TOK_L_NOT = 295,
+     TOK_LESS = 296,
+     TOK_GREATER = 297,
+     TOK_GEQ = 298,
+     TOK_LEQ = 299,
+     TOK_EQUAL = 300,
+     TOK_NEQ = 301,
+     TOK_PLUS = 302,
+     TOK_MINUS = 303,
+     TOK_MUL = 304,
+     TOK_DIV = 305,
+     TOK_MUL2 = 306,
+     TOK_DIV2 = 307,
+     TOK_UP = 308,
+     TOK_TRUE = 309,
+     TOK_FALSE = 310,
+     TOK_LETTER = 311,
+     TOK_DIGIT = 312
    };
 #endif
 /* Tokens.  */
@@ -125,6 +152,33 @@
 #define TOK_UNTIL 283
 #define TOK_WHILE 284
 #define TOK_COMMENT 285
+#define TOK_GOTO 286
+#define TOK_ELSE 287
+#define TOK_IF 288
+#define TOK_THEN 289
+#define TOK_FOR 290
+#define TOK_DO 291
+#define TOK_L_AND 292
+#define TOK_L_OR 293
+#define TOK_L_IN 294
+#define TOK_L_NOT 295
+#define TOK_LESS 296
+#define TOK_GREATER 297
+#define TOK_GEQ 298
+#define TOK_LEQ 299
+#define TOK_EQUAL 300
+#define TOK_NEQ 301
+#define TOK_PLUS 302
+#define TOK_MINUS 303
+#define TOK_MUL 304
+#define TOK_DIV 305
+#define TOK_MUL2 306
+#define TOK_DIV2 307
+#define TOK_UP 308
+#define TOK_TRUE 309
+#define TOK_FALSE 310
+#define TOK_LETTER 311
+#define TOK_DIGIT 312
 
 
 
@@ -140,11 +194,14 @@ void yyerror(const char *s);
 extern int yylex();
 extern int yyparse();
 extern FILE *yyin;
+extern int yylineno;
+
+#define YYERROR_VERBOSE 1
 
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 
 /* Enabling verbose error messages.  */
@@ -162,7 +219,7 @@ extern FILE *yyin;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 13 "algol60.y"
+#line 18 "algol60.y"
 {
     int num;
     char sep;
@@ -172,7 +229,7 @@ typedef union YYSTYPE
     int bol;
 }
 /* Line 193 of yacc.c.  */
-#line 176 "algol60.tab.c"
+#line 233 "algol60.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -185,7 +242,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 189 "algol60.tab.c"
+#line 246 "algol60.tab.c"
 
 #ifdef short
 # undef short
@@ -403,7 +460,7 @@ union yyalloc
 #define YYLAST   8
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  31
+#define YYNTOKENS  58
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
@@ -413,7 +470,7 @@ union yyalloc
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   285
+#define YYMAXUTOK   312
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -449,7 +506,10 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57
 };
 
 #if YYDEBUG
@@ -463,14 +523,14 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      32,     0,    -1,     3,    -1,     4,    -1,     5,    -1,     6,
+      59,     0,    -1,     3,    -1,     4,    -1,     5,    -1,     6,
       -1,     7,    -1,     8,    -1,     9,    -1,    10,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    40,    40,    41,    42,    43,    44,    45,    46,    47
+       0,    69,    69,    70,    71,    72,    73,    74,    75,    76
 };
 #endif
 
@@ -485,7 +545,12 @@ static const char *const yytname[] =
   "TOK_OWN", "TOK_BOOLEAN", "TOK_INTEGER", "TOK_REAL", "TOK_ARRAY",
   "TOK_SWITCH", "TOK_PROCEDURE", "TOK_COMMA", "TOK_PERIOD", "TOK_COLON",
   "TOK_SEMICOLON", "TOK_WALRUS", "TOK_UNDERSCORE", "TOK_STEP", "TOK_UNTIL",
-  "TOK_WHILE", "TOK_COMMENT", "$accept", "bracket", 0
+  "TOK_WHILE", "TOK_COMMENT", "TOK_GOTO", "TOK_ELSE", "TOK_IF", "TOK_THEN",
+  "TOK_FOR", "TOK_DO", "TOK_L_AND", "TOK_L_OR", "TOK_L_IN", "TOK_L_NOT",
+  "TOK_LESS", "TOK_GREATER", "TOK_GEQ", "TOK_LEQ", "TOK_EQUAL", "TOK_NEQ",
+  "TOK_PLUS", "TOK_MINUS", "TOK_MUL", "TOK_DIV", "TOK_MUL2", "TOK_DIV2",
+  "TOK_UP", "TOK_TRUE", "TOK_FALSE", "TOK_LETTER", "TOK_DIGIT", "$accept",
+  "bracket", 0
 };
 #endif
 
@@ -497,14 +562,16 @@ static const yytype_uint16 yytoknum[] =
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-     285
+     285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
+     295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
+     305,   306,   307,   308,   309,   310,   311,   312
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    31,    32,    32,    32,    32,    32,    32,    32,    32
+       0,    58,    59,    59,    59,    59,    59,    59,    59,    59
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -562,7 +629,7 @@ static const yytype_uint8 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     4,     5,     6,     7,     8,     9,    10,    32,
+       0,     3,     4,     5,     6,     7,     8,     9,    10,    59,
        0
 };
 
@@ -1379,7 +1446,7 @@ yyreduce:
     {
       
 /* Line 1267 of yacc.c.  */
-#line 1383 "algol60.tab.c"
+#line 1450 "algol60.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1593,11 +1660,11 @@ yyreturn:
 }
 
 
-#line 74 "algol60.y"
+#line 157 "algol60.y"
 
 
 void yyerror(const char *s) {
-    fprintf(stderr, "hit an error %s\n", s);
+    fprintf(stderr, "hit an error %s note: line number %d\n", s, yylineno);
     exit(1);
 }
 
