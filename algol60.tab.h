@@ -158,7 +158,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 18 "algol60.y"
+#line 16 "algol60.y"
 {
     int num;
     char sep;

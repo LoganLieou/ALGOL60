@@ -70,7 +70,7 @@ _          { return TOK_UNDERSCORE; }
 
 [0-9] { printf("received digit\n"); return TOK_DIGIT; }
 
-[a-zA-Z] { return TOK_LETTER; }
+[a-zA-Z] { printf("received token letter\n"); return TOK_LETTER; }
 
 [ \t\n]+ { printf("hit newline\n"); }
 .        { return yytext[0]; }

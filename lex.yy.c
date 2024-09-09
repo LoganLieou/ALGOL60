@@ -1133,7 +1133,7 @@ YY_RULE_SETUP
 case 55:
 YY_RULE_SETUP
 #line 73 "algol60.l"
-{ return TOK_LETTER; }
+{ printf("received token letter\n"); return TOK_LETTER; }
 	YY_BREAK
 case 56:
 /* rule 56 can match eol */

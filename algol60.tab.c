@@ -201,7 +201,7 @@ extern int yylineno;
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 1
+# define YYDEBUG 0
 #endif
 
 /* Enabling verbose error messages.  */
@@ -219,7 +219,7 @@ extern int yylineno;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 18 "algol60.y"
+#line 16 "algol60.y"
 {
     int num;
     char sep;
@@ -530,7 +530,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    69,    69,    70,    71,    72,    73,    74,    75,    76
+       0,    67,    67,    68,    69,    70,    71,    72,    73,    74
 };
 #endif
 
@@ -1660,7 +1660,7 @@ yyreturn:
 }
 
 
-#line 157 "algol60.y"
+#line 167 "algol60.y"
 
 
 void yyerror(const char *s) {

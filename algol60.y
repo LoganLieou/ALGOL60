@@ -152,6 +152,18 @@ digit:
 
 letter:
     TOK_LETTER
+
+basic_symbol:
+    letter
+    | digit
+    | logical_value
+    | delimeter
+
+identifier:
+    letter
+    | identifier letter
+    | identifier digit
+
 %%
 
 void yyerror(const char *s) {
